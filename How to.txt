@@ -1,0 +1,31 @@
+Created 3 files, read a file, ran a command
+Building the demo now backend and sample generator are written, so next I'm generating the PDFs and testing extraction and answers before I write the UI.
+
+Ran 13 commands, created 3 files, and 2 more tools
+The full project is built as one zip, and I ran your demo flow in a real browser with no errors.
+
+Run on Windows (full steps are in the README)
+
+bat
+cd property-doc-intelligence
+python -m venv venv
+venvScriptsactivate
+pip install -r requirements.txt
+python app.py
+Then open http127.0.0.15000.
+
+Tested end to end
+
+Dashboard opens with 3 fictional documents and 3 example questions already in Recent Questions.
+Clicking Unit 302 fills the extracted info, each field with its page number.
+When does the lease for Unit 302 expire gives March 31, 2027, with source Unit 302 — Lease Agreement — Page 3.
+What is the monthly rent for Unit 302 gives $1,850, with source Page 2.
+An unrelated question returns not found, and uploading a new PDF processes and appears in the table.
+On a phone-width screen the page doesn't scroll sideways.
+Things to know
+
+No LLM needed. Without a local model it answers from extracted fields and keyword retrieval. An optional Ollama model, if you install one, gives more natural answers to open-ended questions. I could not test the Ollama path here, so check it on your machine if you plan to show it.
+Field extraction is pattern-based. It works well on labelled lease wording like the samples; unusual layouts may show Not found.
+Scanned PDFs are flagged No text found. OCR is not included.
+Reset the demo by deleting the data folder.
+For recording, there are three clickable question chips under the question box, and the README has a 60–90 second script.
